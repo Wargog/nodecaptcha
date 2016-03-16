@@ -9,11 +9,8 @@ Recaptcha.verify = function(key, response, callback) {
   var opts = {
     host: 'www.google.com',
     port: 443,
-    path: '/recaptcha/api/siteverify',
-    method: 'POST',
-	headers: { 'Content-Type': 'application,json' },
-	json: { secret: key, response: response }
-    //body: JSON.stringify({ secret: key, response: response })
+    path: '/recaptcha/api/siteverify?secret=' + key + '&response=' + response,
+    method: 'GET'
   };
 
   var req = https.request(opts, function(res) {
