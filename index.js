@@ -11,7 +11,9 @@ Recaptcha.verify = function(key, response, callback) {
     port: 443,
     path: '/recaptcha/api/siteverify',
     method: 'POST',
-    body: JSON.stringify({ secret: key, response: response })
+	headers: { 'Content-Type': 'application,json' },
+	json: { secret: key, response: response }
+    //body: JSON.stringify({ secret: key, response: response })
   };
 
   var req = https.request(opts, function(res) {
